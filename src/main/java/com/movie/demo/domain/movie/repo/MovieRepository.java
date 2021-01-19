@@ -3,15 +3,15 @@ package com.movie.demo.domain.movie.repo;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Repository;
 
 import com.movie.demo.domain.movie.Movie;
 import com.movie.demo.domain.movie.dto.CommonDto;
 import com.movie.demo.domain.movie.dto.PostReqDto;
 import com.movie.demo.domain.movie.dto.PutReqDto;
 
-@Configuration
+@Repository
 public class MovieRepository {
 	
 	public List<Movie> findAll() {
@@ -44,9 +44,6 @@ public class MovieRepository {
 	}
 	
 	public CommonDto<String> post(PostReqDto dto) {
-		if (dto.getTitle() == null || dto.getTitle().equals("")) {
-			return new CommonDto<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "fail");
-		}
 		return new CommonDto<>(HttpStatus.OK.value(), "ok");
 	}
 	
@@ -60,9 +57,6 @@ public class MovieRepository {
 	}
 	
 	public CommonDto<String> putById(int id, PutReqDto dto) {
-		if (dto.getTitle() == null || dto.getTitle().equals("")) {
-			return new CommonDto<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), "fail");
-		}
 		return new CommonDto<>(HttpStatus.OK.value(), "ok");
 	}
 	

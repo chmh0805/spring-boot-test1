@@ -1,5 +1,8 @@
 package com.movie.demo.domain.movie.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class PostReqDto {
+	@NotBlank(message = "fail")
 	private String title;
+	
+	@Positive
 	private double rating;
 }

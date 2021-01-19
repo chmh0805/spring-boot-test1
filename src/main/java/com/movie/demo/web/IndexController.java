@@ -2,7 +2,10 @@ package com.movie.demo.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +42,7 @@ public class IndexController {
 	}
 	
 	@PostMapping("/movie")
-	public CommonDto<String> post(@RequestBody PostReqDto dto) {
+	public CommonDto<String> post(@Valid @RequestBody PostReqDto dto, BindingResult bindingResult) {
 		System.out.println("post()");
 		return movieRepository.post(dto);
 	}
@@ -50,7 +53,7 @@ public class IndexController {
 	}
 	
 	@PutMapping("/movie/{id}")
-	public CommonDto<String> putById(@PathVariable int id, @RequestBody PutReqDto dto) {
+	public CommonDto<String> putById(@PathVariable int id, @Valid @RequestBody PutReqDto dto, BindingResult bindingResult) {
 		return movieRepository.putById(id, dto);
 	}
 	
